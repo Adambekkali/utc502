@@ -7,9 +7,11 @@ Fichiers inclus
 Script : /usr/local/bin/findme.sh
 
 Le script recherche les fichiers FindMe.txt et les supprime.
+
 Service : /etc/systemd/system/findme.service
 
 Un service systemd qui exécute le script findme.sh périodiquement.
+
 Prérequis
 Système d'exploitation : Ubuntu ou une autre distribution Linux compatible avec systemd.
 Accès root pour installer les fichiers et activer le service.
@@ -17,22 +19,10 @@ Installation
 1. Créer le script findme.sh
 Le script suivant sera placé dans /usr/local/bin/findme.sh et aura pour fonction de rechercher et supprimer les fichiers FindMe.txt.
 
-Contenu :
-
-#!/bin/bash
-find /home -name "FindMe.txt" -type f -exec rm -f {} +
-
 Étapes :
-Crée le script avec les permissions appropriées.
+1.Crée le script avec les permissions appropriées.
 
-
-
-sudo nano /usr/local/bin/findme.sh
-
-
-Colle le contenu du script ci-dessus dans le fichier, enregistre et ferme l'éditeur.
-
-Rends le script exécutable :
+Rendre le script executable : 
 
 sudo chmod +x /usr/local/bin/findme.sh
 
@@ -40,25 +30,6 @@ sudo chmod +x /usr/local/bin/findme.sh
 2. Créer le service findme.service
 Ensuite, nous allons créer le fichier de configuration du service pour systemd. Ce fichier doit être placé dans /etc/systemd/system/findme.service.
 
-ini
-
-[Unit]
-Description=Find and Remove findme.txt Files
-
-[Service]
-ExecStart=/bin/bash /usr/local/bin/findme.sh
-User=root
-Restart=always
-RestartSec=60
-
-[Install]
-WantedBy=multi-user.target
-
-Étapes :
-Crée le fichier de service :
-
-
-sudo nano /etc/systemd/system/findme.service
 
 3. Recharger systemd
 
