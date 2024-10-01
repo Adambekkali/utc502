@@ -1,0 +1,10 @@
+[Unit]
+Description=Find and Remove findme.txt Files
+
+[Service]
+ExecStart=/bin/bash /usr/local/bin/findme.sh
+User=root
+Restart=always
+RestartSec=60
+[Install]
+WantedBy=multi-user.target
